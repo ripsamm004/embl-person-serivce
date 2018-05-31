@@ -9,8 +9,8 @@
 
 ## Installation
 ```
-  > git pull git@github.com:ripsamm004/embl-service.git
-  > cd embl-service
+  > git pull git@github.com:ripsamm004/embl-person-service.git
+  > cd embl-person-service
   > mvn clean install
 
 ```
