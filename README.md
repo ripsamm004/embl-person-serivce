@@ -92,7 +92,7 @@ Response Body:
 }
 
 
-* G2et all person list
+* Get all person list
 
 > http://localhost:8081/person
 
