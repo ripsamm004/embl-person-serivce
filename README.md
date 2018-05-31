@@ -34,7 +34,7 @@
 # Person service endpoint : /person
 
 
-* Register a person
+* Add a person
 
 # Sample request
 
