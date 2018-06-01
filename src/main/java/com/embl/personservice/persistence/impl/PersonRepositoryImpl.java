@@ -21,6 +21,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
+    public List<Person> getAllPerson() {
+        return new ArrayList<>(personList.values());
+    }
+
+    @Override
     public Optional<Person> addPerson(String key, Person person) {
         return Optional.ofNullable(personList.putIfAbsent(key, person) == null ? person : null);
     }
@@ -33,10 +38,5 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public boolean removePerson(String key) {
         return personList.remove(key) != null ? true : false;
-    }
-
-    @Override
-    public List<Person> getAllPerson() {
-        return new ArrayList<>(personList.values());
     }
 }

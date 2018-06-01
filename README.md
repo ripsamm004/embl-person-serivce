@@ -237,4 +237,21 @@ Response Body 09:
     "message": "AGE FORMAT NOT CORRECT"
 }
 
+
+Response Body 10:
+
+{
+    "code": "A0006",
+    "message": "REQUEST BODY FORMAT INVALID"
+}
+
+
+Response Body 11:
+
+{
+    "code": "A0007",
+    "message": "INVALID REQUEST BODY"
+}
+
+
 ```

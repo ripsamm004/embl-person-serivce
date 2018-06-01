@@ -3,7 +3,7 @@ package com.embl.personservice.api;
 import com.embl.personservice.api.exception.BadRequestException;
 import com.embl.personservice.domain.Person;
 import com.embl.personservice.service.PersonService;
-import com.embl.personservice.service.PersonValidator;
+import com.embl.personservice.service.Validator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -22,7 +22,7 @@ public class PersonController {
     private static final Logger logger = Logger.getLogger(PersonController.class.getName());
 
     @Inject
-    protected PersonValidator personValidator;
+    protected Validator validator;
 
     @Inject
     protected PersonService personService;
@@ -46,7 +46,7 @@ public class PersonController {
     @PostMapping
     public ResponseEntity<PersonDTO> create(@RequestBody @NotNull Person person) {
         logger.log(Level.INFO, "POST PERSON DATA : " + person);
-        personValidator.validate(person);
+        validator.validate(person);
         PersonDTO personDTO = new PersonDTO(personService.addPerson(person));
         return new ResponseEntity(personDTO, HttpStatus.CREATED);
     }
@@ -63,7 +63,7 @@ public class PersonController {
             throw new BadRequestException("Person name not match", ErrorEnum.API_ERROR_PERSON_NAME_NOT_MATCH);
         }
 
-        personValidator.validate(person);
+        validator.validate(person);
         PersonDTO personDTO = new PersonDTO(personService.replacePerson(person));
         return new ResponseEntity(personDTO, HttpStatus.OK);
     }

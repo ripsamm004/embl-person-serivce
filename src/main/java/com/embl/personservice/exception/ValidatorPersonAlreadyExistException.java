@@ -11,6 +11,6 @@ public class ValidatorPersonAlreadyExistException extends ValidatorGenericExcept
 
     @Override
     public String getMessage(){
-        return this.fieldName + " person already exist";
+        return this.fieldName;
     }
 }
