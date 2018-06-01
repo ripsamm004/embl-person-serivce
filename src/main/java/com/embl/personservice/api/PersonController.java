@@ -31,8 +31,7 @@ public class PersonController {
     @GetMapping()
     public ResponseEntity<PersonDTO> showAll() {
         logger.log(Level.INFO, "GET : SHOW ALL PERSON");
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.addAllPerson(personService.getAllPerson());
+        PersonDTO personDTO = new PersonDTO(personService.getAllPerson());
         return new ResponseEntity(personDTO, HttpStatus.OK);
     }
 
@@ -40,8 +39,7 @@ public class PersonController {
     @GetMapping("/{firstName}/{lastName}")
     public ResponseEntity<PersonDTO> getByName(@PathVariable @NotNull String firstName, @PathVariable @NotNull String lastName ) {
         logger.log(Level.INFO, "GET : FIND PERSON BY FIRST NAME AND LAST NAME");
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.addPerson(personService.getPerson(firstName, lastName));
+        PersonDTO personDTO = new PersonDTO(personService.getPerson(firstName, lastName));
         return new ResponseEntity(personDTO, HttpStatus.OK);
     }
 
@@ -49,8 +47,7 @@ public class PersonController {
     public ResponseEntity<PersonDTO> create(@RequestBody @NotNull Person person) {
         logger.log(Level.INFO, "POST PERSON DATA : " + person);
         personValidator.validate(person);
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.addPerson(personService.addPerson(person));
+        PersonDTO personDTO = new PersonDTO(personService.addPerson(person));
         return new ResponseEntity(personDTO, HttpStatus.CREATED);
     }
 
@@ -58,7 +55,6 @@ public class PersonController {
     @PutMapping("/{firstName}/{lastName}")
     public ResponseEntity<PersonDTO> replace(@RequestBody Person person, @PathVariable @NotNull String firstName, @PathVariable @NotNull String lastName ) {
         logger.log(Level.INFO, "PUT : UPDATE PERSON : " + person);
-
         if(StringUtils.isEmpty(firstName)
                 || StringUtils.isEmpty(lastName)
                 || !person.getFirst_name().equals(firstName)
@@ -68,8 +64,7 @@ public class PersonController {
         }
 
         personValidator.validate(person);
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.addPerson(personService.replacePerson(person));
+        PersonDTO personDTO = new PersonDTO(personService.replacePerson(person));
         return new ResponseEntity(personDTO, HttpStatus.OK);
     }
 

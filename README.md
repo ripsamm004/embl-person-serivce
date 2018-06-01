@@ -170,4 +170,71 @@ URL : http://localhost:8081/person/Adam/Smith
 
 Response code : 200
 
+
+* Sample Error response
+
+Content-Type : application/json
+
+Response Body 01 :
+{
+    "code": "M0001",
+    "message": "WE ARE EXPERIENCING SOME ISSUES, PLEASE TRY LATER"
+}
+
+
+Response Body 02:
+{
+    "code": "M0002",
+    "message": "NO FOUND EXCEPTION"
+}
+
+
+Response Body 03:
+{
+    "code": "M0003",
+    "message": "BAD REQUEST EXCEPTION"
+}
+
+Response Body 04:
+{
+    "code": "M0004",
+    "message": "FORBIDDEN EXCEPTION"
+}
+
+Response Body 05:
+
+{
+    "code": "A0001",
+    "message": "PERSON ALREADY EXIST"
+}
+
+
+Response Body 06:
+
+{
+    "code": "A0002",
+    "message": "PERSON NOT FOUND"
+}
+
+Response Body 07:
+
+{
+    "code": "A0003",
+    "message": "PERSON NAME NOT CORRECT"
+}
+
+Response Body 08:
+
+{
+    "code": "A0004",
+    "message": "PERSON NAME NOT MATCH WITH REQUEST BODY"
+}
+
+Response Body 09:
+
+{
+    "code": "A0005",
+    "message": "AGE FORMAT NOT CORRECT"
+}
+
 ```

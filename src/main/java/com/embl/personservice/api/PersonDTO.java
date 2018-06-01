@@ -13,11 +13,11 @@ import java.util.List;
 public class PersonDTO {
     private static final List<Person> person = new ArrayList<Person>();
 
-    public static void addAllPerson(List<Person> persons){
-        this.person.addAll(persons);
+    public PersonDTO(List<Person> persons){
+        person.addAll(persons);
     }
 
-    public void addPerson(Person persons){
-        this.person.add(persons);
+    public PersonDTO(Person persons){
+        person.add(persons);
     }
 }
