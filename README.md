@@ -202,6 +202,12 @@ Response Body 04:
 }
 
 Response Body 05:
+{
+    "code": "M0005",
+    "message": "SERVER_EXCEPTION"
+}
+
+Response Body 06:
 
 {
     "code": "A0001",
@@ -209,28 +215,28 @@ Response Body 05:
 }
 
 
-Response Body 06:
+Response Body 07:
 
 {
     "code": "A0002",
     "message": "PERSON NOT FOUND"
 }
 
-Response Body 07:
+Response Body 08:
 
 {
     "code": "A0003",
     "message": "PERSON NAME NOT CORRECT"
 }
 
-Response Body 08:
+Response Body 09:
 
 {
     "code": "A0004",
     "message": "PERSON NAME NOT MATCH WITH REQUEST BODY"
 }
 
-Response Body 09:
+Response Body 10:
 
 {
     "code": "A0005",
@@ -238,7 +244,7 @@ Response Body 09:
 }
 
 
-Response Body 10:
+Response Body 11:
 
 {
     "code": "A0006",
@@ -246,7 +252,7 @@ Response Body 10:
 }
 
 
-Response Body 11:
+Response Body 12:
 
 {
     "code": "A0007",
