@@ -204,7 +204,7 @@ Response Body 04:
 Response Body 05:
 {
     "code": "M0005",
-    "message": "SERVER_EXCEPTION"
+    "message": "SERVER EXCEPTION"
 }
 
 Response Body 06:
