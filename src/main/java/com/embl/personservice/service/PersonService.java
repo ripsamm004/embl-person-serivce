@@ -1,10 +1,10 @@
 package com.embl.personservice.service;
 
 import com.embl.personservice.api.ErrorEnum;
+import com.embl.personservice.api.exception.NotFoundException;
 import com.embl.personservice.domain.Person;
 import com.embl.personservice.exception.ValidatorPersonAlreadyExistException;
 import com.embl.personservice.persistence.PersonRepository;
-import com.embl.personservice.api.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -44,5 +44,4 @@ public class PersonService
             throw new NotFoundException("Person not fount", ErrorEnum.API_ERROR_PERSON_NOT_FOUND);
         }
     }
-
 }

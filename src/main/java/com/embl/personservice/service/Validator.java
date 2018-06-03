@@ -1,7 +1,7 @@
 package com.embl.personservice.service;
 
-import com.embl.personservice.api.exception.BadRequestException;
 import com.embl.personservice.api.ErrorEnum;
+import com.embl.personservice.api.exception.BadRequestException;
 import com.embl.personservice.domain.Person;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
