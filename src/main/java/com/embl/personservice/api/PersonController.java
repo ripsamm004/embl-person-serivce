@@ -50,15 +50,14 @@ public class PersonController {
     @PutMapping("/{firstName}/{lastName}")
     public ResponseEntity<PersonDTO> replace(@RequestBody Person person, @PathVariable @NotNull String firstName, @PathVariable @NotNull String lastName ) {
         log.info("PUT : UPDATE PERSON : " + person);
-        if(StringUtils.isEmpty(firstName)
-                || StringUtils.isEmpty(lastName)
-                || !person.getFirst_name().equals(firstName)
-                || !person.getLast_name().equals(lastName)) {
 
+        validator.validate(person);
+
+        if(!person.getFirst_name().equals(firstName)
+                || !person.getLast_name().equals(lastName)) {
             throw new BadRequestException("Person name not match", ErrorEnum.API_ERROR_PERSON_NAME_NOT_MATCH);
         }
 
-        validator.validate(person);
         PersonDTO personDTO = new PersonDTO(personService.replacePerson(person));
         return new ResponseEntity(personDTO, HttpStatus.OK);
     }

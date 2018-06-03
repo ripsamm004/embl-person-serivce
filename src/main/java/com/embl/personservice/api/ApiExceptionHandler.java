@@ -5,29 +5,28 @@ import com.embl.personservice.api.exception.ForbiddenException;
 import com.embl.personservice.api.exception.NotFoundException;
 import com.embl.personservice.api.exception.ServerException;
 import com.embl.personservice.exception.ValidatorGenericException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+@Slf4j
 @ControllerAdvice
-public class RegistrationExceptionHandler {
+public class ApiExceptionHandler {
 
-    Logger logger = Logger.getLogger(RegistrationExceptionHandler.class.getName());
 
     @ExceptionHandler(ValidatorGenericException.class)
     public ResponseEntity<Object> handleValidationException(ValidatorGenericException ex) {
-        logger.log(Level.SEVERE, ex.getMessage());
+        log.error(ex.getMessage());
         return response(ex.getApiError(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Object> handleBadRequestException(BadRequestException ex) {
 
-        logger.log(Level.SEVERE, ex.getLogMessage());
+        log.error(ex.getLogMessage());
         return response(ex.getApiError(), HttpStatus.BAD_REQUEST);
 
     }
@@ -35,7 +34,7 @@ public class RegistrationExceptionHandler {
     @ExceptionHandler(ServerException.class)
     public ResponseEntity<Object> handleServerException(ServerException ex) {
 
-        logger.log(Level.SEVERE, ex.getLogMessage());
+        log.error(ex.getLogMessage());
         return response(ex.getApiError(), HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
@@ -43,22 +42,28 @@ public class RegistrationExceptionHandler {
 
     @ExceptionHandler(ForbiddenException.class)
     public ResponseEntity<Object> handleForbiddenException(ForbiddenException ex){
-        logger.log(Level.SEVERE, ex.getLogMessage());
+        log.error(ex.getLogMessage());
         return response(ex.getApiError(), HttpStatus.FORBIDDEN);
 
     }
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleNotFoundException(NotFoundException ex){
-        logger.log(Level.SEVERE, ex.getLogMessage());
+        log.error(ex.getLogMessage());
         return response(ex.getApiError(), HttpStatus.NOT_FOUND);
 
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Object> handleJsonObjectParserException(HttpMessageNotReadableException ex) {
+        log.error(ex.getMessage());
+        return response(ErrorEnum.API_ERROR_REQUEST_BODY_FORMAT_INVALID, HttpStatus.BAD_REQUEST);
+    }
+    
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGenericException(Exception ex) {
 
-        logger.log(Level.SEVERE, ex.getMessage());
+        log.error(ex.getMessage());
         return response(ErrorEnum.INTERNAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
@@ -67,7 +72,7 @@ public class RegistrationExceptionHandler {
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<Object> handleGenericThrowable(Throwable ex) {
 
-        logger.log(Level.SEVERE, ex.getMessage());
+        log.error(ex.getMessage());
         return response(ErrorEnum.INTERNAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -8,6 +8,7 @@ public enum ErrorEnum {
     NO_FOUND_EXCEPTION                          ("M0002","NO FOUND EXCEPTION"),
     BAD_REQUEST_EXCEPTION                       ("M0003","BAD REQUEST EXCEPTION"),
     FORBIDDEN_EXCEPTION                         ("M0004","FORBIDDEN EXCEPTION"),
+    SERVER_EXCEPTION                            ("M0005","SERVER EXCEPTION"),
 
     // API CONFIG ERRORS
     API_ERROR_PERSON_ALREADY_EXIST              ("A0001","PERSON ALREADY EXIST"),
