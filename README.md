@@ -7,13 +7,6 @@
 * Maven
 * GIT
 
-## Dependencies
-
-* **spring-boot** version 2.0.1.RELEASE
-   * **spring-boot-starter-web**
-* **Lombok** version 1.16.16.
-
-
 ## Installation
 ```
   > git pull git@github.com:ripsamm004/embl-person-service.git
